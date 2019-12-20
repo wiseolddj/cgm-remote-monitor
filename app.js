@@ -49,6 +49,7 @@ function create(env, ctx) {
      }
 
     app.set('view engine', 'ejs');
+   
     // this allows you to render .html files as templates in addition to .ejs
     app.engine('html', require('ejs').renderFile);
     app.engine('appcache', require('ejs').renderFile);
@@ -93,6 +94,7 @@ function create(env, ctx) {
     }));
 
     app.get("/", (req, res) => {
+        res.removeHeader('X-Frame-Options');
         res.render("index.html", {
             locals: app.locals
         });
