@@ -95,6 +95,7 @@ function create(env, ctx) {
 
     app.get("/", (req, res) => {
         res.removeHeader('X-Frame-Options');
+	res.header('X-Powered-By', 'dj');
         res.render("index.html", {
             locals: app.locals
         });
